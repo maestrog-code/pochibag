@@ -403,7 +403,7 @@ function getFooterHTML() {
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="logo.jpeg" alt="PochiBag" style="height:56px;width:auto;object-fit:contain;margin-bottom:.75rem;opacity:0.9;"/>
+          <img src="logo-transparent.png" alt="PochiBag" style="height:56px;width:auto;object-fit:contain;margin-bottom:.75rem;opacity:0.9;"/>
           <div class="footer-brand-sub" style="color:var(--gold);font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.75rem;">Elegance Meets Chic · Est. 2026</div>
           <p>Curated pieces, soft luxury lifestyle ✨<br>Location: Chandigarh, Kharar<br>Deliveries in India 🇮🇳<br>Email: viannekezzy@gmail.com<br>Phone: +91 8264329574</p>
           <div class="socials">
@@ -498,7 +498,7 @@ function getNavHTML(activePage) {
 
   <nav class="navbar" id="navbar">
     <a href="index.html" class="nav-logo">
-      <img src="logo.jpeg" alt="PochiBag" style="height:50px;width:auto;object-fit:contain;"/>
+      <img src="logo-transparent.png" alt="PochiBag" style="height:50px;width:auto;object-fit:contain;"/>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a></li>
