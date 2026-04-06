@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PochiBag — Luxury Perfumes, Handbags & Jewellery</title>
+  <meta name="description" content="PochiBag is your destination for curated luxury perfumes, designer handbags and fine jewellery sets. Timeless elegance, delivered." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAV (injected by JS) -->
+  <div id="navPlaceholder"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <span class="hero-tag">New Collection 2026</span>
+      <h1>Where Scent<br>Meets <em>Elegance</em></h1>
+      <p class="hero-desc">Curated luxury perfumes, handcrafted bags and fine jewellery sets — each piece a statement of timeless grace and feminine power.</p>
+      <div class="hero-cta">
+        <a href="shop.html" class="btn-primary">Explore Collection</a>
+        <a href="#categories" class="btn-ghost">Browse Categories</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>200+</strong>
+          <span>Curated Pieces</span>
+        </div>
+        <div class="hero-stat">
+          <strong>3</strong>
+          <span>Collections</span>
+        </div>
+        <div class="hero-stat">
+          <strong>4.9★</strong>
+          <span>Avg Rating</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="Perfume ad.png" alt="PochiBag Fragrance Collection" class="hero-img-main"/>
+      <div class="hero-img-overlay"></div>
+      <div class="hero-float-card">
+        <div class="float-tag">Bestseller</div>
+        <div class="float-name">Aquatic Kiss</div>
+        <div class="float-price">₹18,500</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- BRAND TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Perfumes</span><span class="gold">✦</span>
+      <span>Handbags</span><span class="gold">✦</span>
+      <span>Jewellery</span><span class="gold">✦</span>
+      <span>Gift Sets</span><span class="gold">✦</span>
+      <span>Luxury</span><span class="gold">✦</span>
+      <span>Elegance</span><span class="gold">✦</span>
+      <span>Craftsmanship</span><span class="gold">✦</span>
+      <span>Timeless</span><span class="gold">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>Perfumes</span><span class="gold">✦</span>
+      <span>Handbags</span><span class="gold">✦</span>
+      <span>Jewellery</span><span class="gold">✦</span>
+      <span>Gift Sets</span><span class="gold">✦</span>
+      <span>Luxury</span><span class="gold">✦</span>
+      <span>Elegance</span><span class="gold">✦</span>
+      <span>Craftsmanship</span><span class="gold">✦</span>
+      <span>Timeless</span><span class="gold">✦</span>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="cat-banner reveal-on-scroll" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Our Collections</div>
+        <h2>Shop by Category</h2>
+        <div class="gold-divider"></div>
+        <p>Three worlds of luxury, one destination</p>
+      </div>
+      <div class="cat-grid">
+
+        <!-- Perfumes -->
+        <div class="cat-card" onclick="window.location.href='shop.html?category=Perfumes'">
+          <img src="Perfume ad.png" alt="PochiBag Perfumes Collection" loading="lazy"/>
+          <div class="cat-overlay">
+            <span class="cat-tag">Collection</span>
+            <h3>Perfumes</h3>
+            <p>Eau de Parfum · Extrait · Aquatic</p>
+            <span class="cat-btn">Discover Scents →</span>
+          </div>
+        </div>
+
+        <!-- Handbags -->
+        <div class="cat-card" onclick="window.location.href='shop.html?category=Handbags'">
+          <img src="Handbags.png" alt="PochiBag Handbag Collection" loading="lazy"/>
+          <div class="cat-overlay">
+            <span class="cat-tag">Collection</span>
+            <h3>Handbags</h3>
+            <p>Totes · Crossbody · Satchel · Mini</p>
+            <span class="cat-btn">Explore Bags →</span>
+          </div>
+        </div>
+
+        <!-- Jewellery -->
+        <div class="cat-card" onclick="window.location.href='shop.html?category=Jewellery'">
+          <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80" alt="PochiBag Jewellery Collection" loading="lazy"/>
+          <div class="cat-overlay">
+            <span class="cat-tag">Collection</span>
+            <h3>Jewellery</h3>
+            <p>Sets · Bridal · Minimalist · Statement</p>
+            <span class="cat-btn">View Sets →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="products-section reveal-on-scroll" id="new-arrivals">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Just Landed</div>
+        <h2>New Arrivals</h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Perfumes">Perfumes</button>
+        <button class="filter-btn" data-filter="Handbags">Handbags</button>
+        <button class="filter-btn" data-filter="Jewellery">Jewellery</button>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="shop.html" class="btn-outline">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING -->
+  <section class="trending-section reveal-on-scroll" id="trending">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">This Week</div>
+        <h2>Trending Now</h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="trending-grid" id="trendingGrid"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <section class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h4>Free Delivery</h4>
+          <p>On all orders above $500. Delivered in a signature PochiBag gift box.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Secure Checkout</h4>
+          <p>256-bit SSL encryption on all payments. Your data is always protected.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✨</div>
+          <h4>Gift Wrapping</h4>
+          <p>Every order can be wrapped in our luxe tissue and ribbon packaging.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">↩️</div>
+          <h4>Easy Returns</h4>
+          <p>30-day returns on all items. No questions asked. Free collection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO BANNER -->
+  <section class="promo-banner">
+    <div class="container">
+      <div class="promo-content">
+        <span class="promo-tag">Limited Offer · Season Sale</span>
+        <h2>Up to <em>40% Off</em><br>Selected Items</h2>
+        <p>On our finest perfumes, signature bags, and jewellery sets — for a limited time only.</p>
+        <a href="shop.html?badge=sale" class="btn-primary">Shop the Sale</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="brand-story reveal-on-scroll">
+    <div class="container">
+      <div class="brand-story-grid">
+        <div class="brand-story-img">
+          <img src="Company motto.png" alt="PochiBag — Elegance Meets Chic" loading="lazy"/>
+        </div>
+        <div class="brand-story-text">
+          <span class="section-tag">Our Story</span>
+          <h2>Where Elegance<br><em>Meets Chic</em></h2>
+          <div class="gold-divider" style="margin:1rem 0;"></div>
+          <p class="brand-lead">PochiBag was founded with a single belief: that every woman deserves to wear her confidence. We curate perfumes that tell your story, handbags that carry your world, and jewellery that lights up every room you walk into.</p>
+          <p class="brand-body">Each product in our collection is hand-selected for quality, craftsmanship, and the kind of timeless elegance that never goes out of style. From our signature fragrances to our structured leather bags — every piece is a chapter in your personal style story.</p>
+          <a href="shop.html" class="btn-outline" style="margin-top:2rem;">Explore Our World</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+
+  <section class="newsletter-section reveal-on-scroll">
+    <div class="container">
+      <div class="newsletter-box">
+        <div>
+          <span class="nl-tag">Inner Circle</span>
+          <h2>Join the<br>PochiBag Family</h2>
+          <p>Get first access to new arrivals, exclusive offers, style edits and more — delivered to your inbox with grace.</p>
+        </div>
+        <div class="nl-form">
+          <input type="email" id="nlEmail" placeholder="Your email address" />
+          <button class="btn-primary" onclick="subscribeNewsletter()">Subscribe Now</button>
+          <p class="nl-note">No spam. You can unsubscribe at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (injected by JS) -->
+  <div id="footerPlaceholder"></div>
+
+  <script src="products-data.js"></script>
+  <script src="shared.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

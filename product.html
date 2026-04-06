@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — PochiBag</title>
+  <meta name="description" content="View product details at PochiBag — your source for luxury perfumes, handbags and jewellery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="product.css" />
+</head>
+
+<body>
+  <div id="navPlaceholder"></div>
+
+  <main class="product-hero">
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <div class="container">
+        <div class="breadcrumb-inner">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <a href="shop.html" id="breadCat">Shop</a>
+          <span>›</span>
+          <span id="breadName">Product</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-layout">
+      <!-- IMAGE -->
+      <div class="product-gallery" id="productGallery">
+        <div class="gallery-main">
+          <div class="gallery-placeholder" id="galleryPlaceholder">
+            <div class="gallery-placeholder-icon" id="placeholderIcon">📦</div>
+            <div class="gallery-placeholder-text">Product Image Placeholder</div>
+          </div>
+          <img id="productImg" src="" alt="" style="display:none;"/>
+          <span class="product-badge gallery-badge" id="galleryBadge" style="display:none;"></span>
+        </div>
+        <!-- Thumbnail Strip -->
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+
+      <!-- INFO -->
+      <div class="product-info-panel">
+        <div class="product-cat-crumb" id="productCat">Category</div>
+        <h1 id="productName">Loading...</h1>
+
+        <div class="product-rating-row">
+          <span class="stars" id="productStars">★★★★★</span>
+          <span class="rating-text" id="productRating">5.0 · 0 reviews</span>
+        </div>
+
+        <div class="divider-line"></div>
+
+        <div class="price-block">
+          <span class="current-price" id="productPrice">$0</span>
+          <span class="old-price" id="productOldPrice" style="display:none"></span>
+          <span class="save-tag" id="productSaveTag" style="display:none"></span>
+        </div>
+
+        <p class="product-desc" id="productDesc"></p>
+
+        <!-- Scent Notes (shown for Perfumes) -->
+        <div class="scent-notes" id="scentNotes" style="display:none">
+          <div class="scent-notes-title">Fragrance Notes</div>
+          <div class="notes-row">
+            <div class="note-col">
+              <div class="note-label">Top</div>
+              <div class="note-value" id="notesTop"></div>
+            </div>
+            <div class="note-col">
+              <div class="note-label">Heart</div>
+              <div class="note-value" id="notesHeart"></div>
+            </div>
+            <div class="note-col">
+              <div class="note-label">Base</div>
+              <div class="note-value" id="notesBase"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Includes (shown for Jewellery) -->
+        <div class="includes-list" id="includesList" style="display:none">
+          <div class="includes-title">Set Includes</div>
+          <ul id="includesItems"></ul>
+        </div>
+
+        <!-- Size Select -->
+        <div class="size-section" id="sizeSection">
+          <div class="size-label" id="sizeLabel">Select Option</div>
+          <div class="size-grid" id="sizeGrid"></div>
+        </div>
+
+        <!-- Add Row -->
+        <div class="add-row">
+          <button class="btn-primary" id="addToBagBtn" onclick="addFromProductPage()">Add to Bag</button>
+          <button class="wishlist-large" id="wishlistBtn" onclick="wishlistToggle(this)" title="Save to wishlist">♡</button>
+        </div>
+
+        <!-- Details Accordion -->
+        <div class="details-section">
+          <div class="detail-row" id="materialsRow" style="display:none">
+            <button class="detail-toggle" onclick="toggleDetail(this)">
+              Materials & Craftsmanship <span class="chevron">▼</span>
+            </button>
+            <div class="detail-body">
+              <div class="detail-body-inner" id="materialsText"></div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <button class="detail-toggle" onclick="toggleDetail(this)">
+              Delivery & Returns <span class="chevron">▼</span>
+            </button>
+            <div class="detail-body">
+              <div class="detail-body-inner">Free delivery on orders over $500. Delivered in a PochiBag signature gift box within 3–5 business days. Easy 30-day returns — free collection from your door.</div>
+            </div>
+          </div>
+          <div class="detail-row">
+            <button class="detail-toggle" onclick="toggleDetail(this)">
+              Authenticity & Care <span class="chevron">▼</span>
+            </button>
+            <div class="detail-body">
+              <div class="detail-body-inner">Every PochiBag item comes with an authenticity certificate. Store in the provided dustbag away from direct sunlight. For detailed care, see the care card included with your purchase.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">You Might Also Love</div>
+        <h2>Related Pieces</h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <div id="footerPlaceholder"></div>
+
+  <script src="products-data.js"></script>
+  <script src="shared.js"></script>
+  <script src="product.js"></script>
+</body>
+
+</html>

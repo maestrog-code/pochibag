@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — PochiBag | Luxury Perfumes, Handbags & Jewellery</title>
+  <meta name="description"
+    content="Browse PochiBag's full collection of luxury perfumes, designer handbags and fine jewellery sets. Filter by category, price, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <link rel="stylesheet" href="shop.css" />
+</head>
+
+<body>
+  <div id="navPlaceholder"></div>
+
+  <!-- SHOP HERO -->
+  <section class="shop-hero">
+    <div class="hero-tag">PochiBag Collection</div>
+    <h1>The Full Collection</h1>
+    <p>Handpicked perfumes, handbags & jewellery sets for the discerning woman</p>
+  </section>
+
+  <!-- SHOP LAYOUT -->
+  <section class="shop-layout">
+    <div class="container">
+      <div class="shop-container">
+
+        <!-- SIDEBAR -->
+        <aside class="shop-sidebar">
+          <div class="sidebar-title">Refine</div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Category</div>
+            <div class="filter-tags" id="categoryFilters">
+              <button class="filter-tag active" data-cat="all">All</button>
+              <button class="filter-tag" data-cat="Perfumes">Perfumes</button>
+              <button class="filter-tag" data-cat="Handbags">Handbags</button>
+              <button class="filter-tag" data-cat="Jewellery">Jewellery</button>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Subcategory</div>
+            <div class="filter-tags" id="subCategoryFilters">
+              <button class="filter-tag" data-sub="Eau de Parfum">EDP</button>
+              <button class="filter-tag" data-sub="Extrait de Parfum">Extrait</button>
+              <button class="filter-tag" data-sub="Shoulder Bags">Shoulder</button>
+              <button class="filter-tag" data-sub="Tote Bags">Tote</button>
+              <button class="filter-tag" data-sub="Crossbody Bags">Crossbody</button>
+              <button class="filter-tag" data-sub="Top Handle Bags">Top Handle</button>
+              <button class="filter-tag" data-sub="Evening Clutches">Clutches</button>
+              <button class="filter-tag" data-sub="Full Sets">Full Sets</button>
+              <button class="filter-tag" data-sub="Bridal Sets">Bridal</button>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Badge</div>
+            <div class="filter-tags" id="badgeFilters">
+              <button class="filter-tag" data-badge="new">New In</button>
+              <button class="filter-tag" data-badge="bestseller">Best Seller</button>
+              <button class="filter-tag" data-badge="sale">Sale</button>
+              <button class="filter-tag" data-badge="exclusive">Exclusive</button>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-section-title">Price Range</div>
+            <div class="price-range">
+              <input type="range" min="0" max="5000" value="5000" step="50" id="priceRange"
+                oninput="updatePriceFilter(this.value)" />
+              <div class="price-labels">
+                <span>$0</span>
+                <span id="priceLabel">Up to $5,000</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="clear-filters" onclick="clearAllFilters()">Clear All Filters</button>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="shop-main">
+          <div class="shop-toolbar">
+            <div class="results-count" id="resultsCount">Showing <strong>0</strong> products</div>
+            <select class="sort-select" id="sortSelect" onchange="applySort()">
+              <option value="default">Sort: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="new">Newest First</option>
+            </select>
+          </div>
+          <div class="shop-grid" id="shopGrid"></div>
+          <div class="load-more-wrap" id="loadMoreWrap">
+            <button class="btn-outline" onclick="loadMore()">Load More</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footerPlaceholder"></div>
+
+  <script src="products-data.js"></script>
+  <script src="shared.js"></script>
+  <script src="shop.js"></script>
+</body>
+
+</html>
