@@ -592,6 +592,29 @@
   text-align: center;
 }
 
+/* ----- FOCUS STATES FOR ACCESSIBILITY ----- */
+.cat-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.btn-outline:focus-visible,
+.btn-dark:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ----- REDUCED MOTION ----- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ----- RESPONSIVE ----- */
 @media (max-width: 1200px) {
   .hero-left { padding: 5rem 3rem 5rem 5rem; }
@@ -612,6 +635,8 @@
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 3rem; }
+  .hero-cta { flex-direction: column; gap: 0.75rem; }
+  .hero-stats { flex-direction: column; gap: 1.5rem; }
   .cat-grid { grid-template-columns: 1fr; }
   .cat-card { aspect-ratio: 4/3; }
   .cat-card:last-child { grid-column: auto; }
@@ -619,12 +644,18 @@
   .trending-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: repeat(2, 1fr); }
   .newsletter-box { padding: 2rem; }
+  .filter-row { justify-content: flex-start; }
 }
 
 @media (max-width: 480px) {
+  .hero { padding-top: 70px; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .hero h1 { font-size: 2.5rem; }
   .products-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 2.5rem; }
+  .hero-stats { display: none; }
+  .newsletter-box { padding: 1.5rem; }
+  .nl-form { gap: 0.75rem; }
 }
 
 /* ----- BRAND STORY ----- */
