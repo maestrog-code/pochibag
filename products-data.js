@@ -1,427 +1,205 @@
 // ============================
 // POCHIBAG — Product Catalog
-// Perfumes · Handbags · Jewellery
+// Verified products shown in supplied product images
 // ============================
 
-// Shorthand for WhatsApp image folder
-const WA = "WhatsApp Unknown 2026-04-06 at 09.54.38/";
-
 const PRODUCTS = [
-
-  // ── PERFUMES ──
   {
-    id: 1,
-    name: "Aquatic Kiss",
+    id: 301,
+    name: "Lara White Eau de Parfum",
     category: "Perfumes",
     subcategory: "Eau de Parfum",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
-    oldPrice: null,
-    badge: "bestseller",
-    rating: "4.9",
-    reviews: 824,
-    sizes: ["24ml", "50ml", "100ml"],
-    desc: "A fresh, luminous aquatic fragrance in our signature Pochi bottle. Evokes sea breeze and white flowers — light yet unforgettable, a scent that stays with you all day.",
-    notes: { top: "Sea Salt, Green Citrus", heart: "White Jasmine, Aquatic Accord", base: "Driftwood, White Musk, Ambergris" },
-    img: "Perfume image.png",
-    images: ["Perfume image.png", "Perfume image 2.png"]
-  },
-  {
-    id: 2,
-    name: "Secret Garden",
-    category: "Perfumes",
-    subcategory: "Eau de Parfum",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.8",
-    reviews: 312,
-    sizes: ["24ml", "50ml", "100ml"],
-    desc: "Our most-loved fragrance. Step into a hidden garden at dusk in our Dior-inspired bottle. Dewy green leaves give way to a heart of rare florals and warm amber — intimate, mysterious, beautifully feminine.",
-    notes: { top: "Green Leaves, Bergamot", heart: "Peony, Iris, Rose", base: "Amber, Sandalwood, White Musk" },
-    img: "Perfume image 2.png",
-    images: ["Perfume image 2.png", "Perfume image.png"]
-  },
-  {
-    id: 3,
-    name: "Noir Santal Mystère",
-    category: "Perfumes",
-    subcategory: "Eau de Parfum",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
-    oldPrice: null,
-    badge: "sale",
     rating: "5.0",
-    reviews: 561,
-    sizes: ["50ml", "100ml"],
-    desc: "A smoky, intimate blend of rare sandalwood and black pepper in an elegant dark bottle. Mysterious, powerful, and deeply seductive.",
-    notes: { top: "Black Pepper, Cardamom", heart: "Sandalwood, Patchouli", base: "Smoke, Leather, Benzoin" },
-    img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80"
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "A 100ml Lara White Eau de Parfum from Manasik, presented in a clean white bottle with a warm metallic collar. A polished everyday fragrance for a soft, feminine finish.",
+    notes: { top: "Fresh floral accords", heart: "Soft white florals", base: "Warm musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.31-dfHSoORPX3ATlygXAgjqaB3stxkVOo.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.31-dfHSoORPX3ATlygXAgjqaB3stxkVOo.jpeg"]
   },
   {
-    id: 4,
-    name: "White Gardenia Dreams",
+    id: 302,
+    name: "Black XXL Pour Homme Eau de Toilette",
     category: "Perfumes",
     subcategory: "Eau de Toilette",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.7",
-    reviews: 198,
-    sizes: ["24ml", "50ml", "100ml"],
-    desc: "Fresh and luminous. This floral masterpiece captures morning gardenia in full bloom, wrapped in clean citrus and soft woods. Your everyday elegance.",
-    notes: { top: "Lemon, Green Leaves", heart: "Gardenia, Jasmine, Lily", base: "White Musk, Sandalwood" },
-    img: "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80"
-  },
-  {
-    id: 5,
-    name: "Amber Rose Royale",
-    category: "Perfumes",
-    subcategory: "Extrait de Parfum",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
-    oldPrice: null,
-    badge: "exclusive",
     rating: "5.0",
-    reviews: 143,
-    sizes: ["24ml", "50ml"],
-    desc: "Our most opulent fragrance. Layers of deep Bulgarian rose, warm amber, and precious resins create a regal scent. Available in our signature golden bottle.",
-    notes: { top: "Pink Peppercorn, Aldehydes", heart: "Bulgarian Rose, Ylang-Ylang", base: "Amber Resin, Oud, Labdanum" },
-    img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80"
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Black XXL Pour Homme by J. Collection is a 100ml Eau de Toilette with a bold black bottle and red detailing. A confident masculine scent made for evening wear and everyday presence.",
+    notes: { top: "Fresh aromatic accords", heart: "Spiced woods", base: "Warm amber and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.31%20%281%29-zwa9eo04YcK0F78DlvfL2S17AxK66T.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.31%20%281%29-zwa9eo04YcK0F78DlvfL2S17AxK66T.jpeg"]
   },
   {
-    id: 6,
-    name: "Caramel Tobacco Luxe",
+    id: 303,
+    name: "Chic Girl Pink Eau de Parfum",
     category: "Perfumes",
     subcategory: "Eau de Parfum",
-    price: { "100ml": 1200, "50ml": 900, "24ml": 500 },
-    oldPrice: null,
-    badge: "sale",
-    rating: "4.8",
-    reviews: 430,
-    sizes: ["50ml", "100ml"],
-    desc: "Sweet yet confident. A warm blend of golden caramel, dark tobacco leaves and creamy vanilla — bold meets irresistible. DM to order! 💬",
-    notes: { top: "Bergamot, Black Currant", heart: "Tobacco, Caramel, Jasmine", base: "Vanilla, Sandalwood, Musk" },
-    img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80"
-  },
-
-  // ── HANDBAGS ──
-  {
-    id: 101,
-    name: "Pochi Monogram Baguette",
-    category: "Handbags",
-    subcategory: "Shoulder Bags",
-    price: 1299,
-    oldPrice: null,
-    badge: "bestseller",
-    rating: "4.9",
-    reviews: 672,
-    sizes: ["One Size"],
-    desc: "Our signature style. The iconic 'C' monogram print in premium faux leather, available in Brown, Black, Cream, White/Green and more. A must-have baguette bag for every wardrobe.",
-    materials: "Premium faux leather with monogram embossing, gold-tone hardware, suede interior with zip pocket.",
-    img: "Handbags.png",
-    images: [
-      "Handbags.png",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.00 (1).jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.01.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.01 (1).jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.02.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.02 (1).jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.02 (2).jpeg"
-    ]
-  },
-  {
-    id: 102,
-    name: "Ivory & Green Structured Satchel",
-    category: "Handbags",
-    subcategory: "Crossbody Bags",
-    price: 1299,
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.8",
-    reviews: 289,
-    sizes: ["One Size"],
-    desc: "A bold statement piece. Ivory structured body with a hunter green leather trim and our signature stag-head gold clasp hardware. Comes with a detachable chain strap.",
-    materials: "Structured faux leather, antique gold hardware, fabric interior with two zip pockets.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.13.04 (1).jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.13.04 (1).jpeg",
-      "handbag 1.png"
-    ]
-  },
-  {
-    id: 103,
-    name: "Noir Quilted Chain Bag",
-    category: "Handbags",
-    subcategory: "Shoulder Bags",
-    price: 1299,
-    oldPrice: null,
-    badge: "new",
-    rating: "4.7",
-    reviews: 154,
-    sizes: ["One Size"],
-    desc: "Channel timeless elegance with this Chanel-inspired quilted black bag. Diamond quilting, gold 'C' logo buckle, and a gold chain strap that doubles as a belt. Goes from day to night effortlessly.",
-    materials: "Quilted PU leather, gold-finish logo hardware and chain strap, microfibre lining.",
-    img: "handbag 2.png",
-    images: [
-      "handbag 2.png",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.01.jpeg"
-    ]
-  },
-  {
-    id: 104,
-    name: "Beige Canvas Mini Tote",
-    category: "Handbags",
-    subcategory: "Tote Bags",
-    price: 1299,
-    oldPrice: null,
-    badge: "sale",
-    rating: "4.9",
-    reviews: 507,
-    sizes: ["One Size"],
-    desc: "Casual luxury in warm beige. Woven canvas with leather handle trim and sleek silver bar-buckle closures. The perfect everyday companion that carries everything in style.",
-    materials: "Woven canvas, genuine leather trim, silver-finish hardware, internal zip pocket.",
-    img: "handbag 3.png",
-    images: [
-      "handbag 3.png",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.04.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.03.jpeg"
-    ]
-  },
-  {
-    id: 105,
-    name: "Caramel Structured Top-Handle",
-    category: "Handbags",
-    subcategory: "Top Handle Bags",
-    price: 1299,
-    oldPrice: null,
-    badge: null,
-    rating: "4.6",
-    reviews: 203,
-    sizes: ["One Size"],
-    desc: "Confidence in every carry. A rich caramel-toned structured bag with a distinctive braided top handle and elegant quatrefoil silver clasp. Classic meets contemporary.",
-    materials: "Premium faux leather, silver-finish hardware, suede interior lining.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.13.03.jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.13.03.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.03 (1).jpeg"
-    ]
-  },
-  {
-    id: 106,
-    name: "Noir Tassel Top-Handle",
-    category: "Handbags",
-    subcategory: "Top Handle Bags",
-    price: 1299,
-    oldPrice: null,
-    badge: "hot",
     rating: "5.0",
-    reviews: 389,
-    sizes: ["One Size"],
-    desc: "Drama, darling. A sleek black pebbled leather bag with statement tassel accents, a circular silver lock clasp, and a curved top handle. The bag that turns heads.",
-    materials: "Pebbled PU leather, silver-finish lock hardware, fabric lining.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.13.05.jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.13.05.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.01.jpeg"
-    ]
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Chic Girl Pink is a 100ml Eau de Parfum in a playful pink high-heel bottle. Its bright presentation makes it a feminine fragrance choice and a distinctive gift.",
+    notes: { top: "Fruity floral accords", heart: "Soft florals", base: "Sweet musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30%20%282%29-hMW0BomzRv89dB5xs3MEUXkNAHzwsP.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30%20%282%29-hMW0BomzRv89dB5xs3MEUXkNAHzwsP.jpeg"]
   },
   {
-    id: 107,
-    name: "Cream Scrunchie Crescent Bag",
-    category: "Handbags",
-    subcategory: "Shoulder Bags",
-    price: 1299,
+    id: 304,
+    name: "Lara Candy Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.8",
-    reviews: 165,
-    sizes: ["One Size"],
-    desc: "Soft, playful, irresistible. This cream crescent shoulder bag features a gathered 'scrunchie' fabric handle and a sweet detachable mini coin pouch — effortlessly trendy.",
-    materials: "Soft fabric body, gathered handle, detachable coin pouch, cotton lining.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.13.03 (1).jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.13.03 (1).jpeg"
-    ]
-  },
-
-  // ── EVENING CLUTCHES ──
-  {
-    id: 108,
-    name: "Crystal Silver Evening Clutch",
-    category: "Handbags",
-    subcategory: "Evening Clutches",
-    price: 1299,
-    oldPrice: null,
-    badge: "new",
-    rating: "4.9",
-    reviews: 412,
-    sizes: ["One Size"],
-    desc: "Sparkle your night. A stunning grid-crystal silver clutch on a delicate pedestal handle. Perfect for galas, weddings, or any night you deserve to shine.",
-    materials: "Crystal-encrusted frame, silver metal handle, satin interior.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.12.57.jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.12.57.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.13.00.jpeg"
-    ]
-  },
-  {
-    id: 109,
-    name: "Gold Floral Crystal Clutch",
-    category: "Handbags",
-    subcategory: "Evening Clutches",
-    price: 1299,
-    oldPrice: null,
-    badge: "bestseller",
     rating: "5.0",
-    reviews: 538,
-    sizes: ["One Size"],
-    desc: "Pure opulence. A rectangular gold clutch adorned with crystal floral motifs and a dazzling diamond-cut clasp. The statement piece your evening wardrobe has been missing.",
-    materials: "Gold-tone crystal embellishment, brass frame, satin lining.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.12.57 (1).jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.12.57 (1).jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.12.57.jpeg"
-    ]
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Lara Candy by Manasik is a 100ml Eau de Parfum in a vivid pink bottle with a metallic collar. A sweet, bright fragrance designed for a playful feminine wardrobe.",
+    notes: { top: "Sweet fruity accords", heart: "Floral candy accords", base: "Soft musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30%20%281%29-2cMt5YbJgu8qiNHgPQEi6A4l7LVnMK.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30%20%281%29-2cMt5YbJgu8qiNHgPQEi6A4l7LVnMK.jpeg"]
   },
   {
-    id: 110,
-    name: "Rose Gold Oval Glitter Clutch",
-    category: "Handbags",
-    subcategory: "Evening Clutches",
-    price: 1299,
+    id: 305,
+    name: "Lara Pink Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.8",
-    reviews: 279,
-    sizes: ["One Size"],
-    desc: "Feminine and luminous. This rosy-pink oval clutch shimmers with glitter finish and an arch gold handle. Compact yet complete — enough room for your essentials and all the magic.",
-    materials: "Glitter fabric, gold-tone arch handle, interior slip pocket.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.12.59.jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.12.59.jpeg"
-    ]
-  },
-  {
-    id: 111,
-    name: "Silver Chevron Minaudière",
-    category: "Handbags",
-    subcategory: "Evening Clutches",
-    price: 1299,
-    oldPrice: null,
-    badge: "sale",
-    rating: "4.7",
-    reviews: 193,
-    sizes: ["One Size"],
-    desc: "Architecture in your hands. A sleek silver box clutch with refined chevron texture and a crystal-studded arch handle. Minimalist glamour at its finest.",
-    materials: "Metal frame with chevron texture, crystal handle embellishments, silk lining.",
-    img: WA + "WhatsApp Image 2026-04-06 at 03.13.00.jpeg",
-    images: [
-      WA + "WhatsApp Image 2026-04-06 at 03.13.00.jpeg",
-      WA + "WhatsApp Image 2026-04-06 at 03.12.57.jpeg"
-    ]
-  },
-
-  // ── JEWELLERY SETS ──
-  {
-    id: 201,
-    name: "Lumière Gold Set",
-    category: "Jewellery",
-    subcategory: "Full Sets",
-    price: 600,
-    oldPrice: null,
-    badge: "bestseller",
     rating: "5.0",
-    reviews: 914,
-    sizes: ["One Size"],
-    desc: "Radiant 18k gold-plated set featuring a graduated tennis bracelet, matching drop earrings and a delicate pendant necklace. Gift-ready in a luxe presentation box.",
-    materials: "18k Gold plating, freshwater pearl accents, sterling silver base.",
-    includes: ["Necklace (45cm)", "Bracelet (19cm)", "Earrings (Drop)"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.22 (2).jpeg",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Lara Pink by Manasik is a 100ml Eau de Parfum with a soft pink bottle and silver collar. Its delicate look suits light, feminine styling and gifting.",
+    notes: { top: "Fresh floral accords", heart: "Powdery florals", base: "Clean musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30-2rFvnWLGTxkzS0eMp90oNajKFltDk3.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.30-2rFvnWLGTxkzS0eMp90oNajKFltDk3.jpeg"]
   },
   {
-    id: 202,
-    name: "Noir Pearl Statement Set",
-    category: "Jewellery",
-    subcategory: "Full Sets",
-    price: 700,
+    id: 306,
+    name: "You Are Mine Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.9",
-    reviews: 347,
-    sizes: ["One Size"],
-    desc: "Dramatic black-japanned metal meets lustrous akoya pearls. A modern contrast set that commands attention — earrings, necklace and ring.",
-    materials: "Black-finished metal alloy, genuine akoya pearls, rhodium accents.",
-    includes: ["Necklace (40cm + 5cm ext)", "Drop Earrings", "Cocktail Ring"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.21.jpeg",
-  },
-  {
-    id: 203,
-    name: "Ivory Bridal Collection",
-    category: "Jewellery",
-    subcategory: "Bridal Sets",
-    price: 700,
-    oldPrice: null,
-    badge: "exclusive",
     rating: "5.0",
-    reviews: 221,
-    sizes: ["Ring: 5", "Ring: 6", "Ring: 7", "Ring: 8"],
-    desc: "Designed for your most precious moments. This complete bridal set in white gold plating with cubic zirconia crystals evokes eternal elegance.",
-    materials: "White gold plating, AAA cubic zirconia, sterling silver base.",
-    includes: ["Tiara/Hair Comb", "Chandelier Earrings", "Tennis Necklace", "Bangle", "Ring"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.23.jpeg",
-    images: ["Jewllery/WhatsApp Image 2026-04-06 at 13.30.23.jpeg", "Jewllery/WhatsApp Image 2026-04-06 at 13.30.24.jpeg"],
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "You Are Mine by J. Collection is a 100ml Eau de Parfum in a dark presentation box with a warm amber-coloured juice. A romantic fragrance for memorable evenings.",
+    notes: { top: "Bright citrus accords", heart: "Warm floral notes", base: "Amber and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.29-iy2Cv1TSISv0ooTbO77n4ggfLIfu5d.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.29-iy2Cv1TSISv0ooTbO77n4ggfLIfu5d.jpeg"]
   },
   {
-    id: 204,
-    name: "Rose Golden Harmony Set",
-    category: "Jewellery",
-    subcategory: "Full Sets",
-    price: 600,
-    oldPrice: null,
-    badge: "sale",
-    rating: "4.8",
-    reviews: 612,
-    sizes: ["One Size"],
-    desc: "Blush-toned rose gold with natural pink tourmaline. Feminine and romantic — perfect layering necklace with matching hoops.",
-    materials: "Rose gold plating, pink tourmaline stones, sterling silver.",
-    includes: ["Layered Necklace Set (2pc)", "Hoop Earrings", "Charm Bracelet"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.23 (1).jpeg",
-  },
-  {
-    id: 205,
-    name: "Onyx & Gold Minimalist Set",
-    category: "Jewellery",
-    subcategory: "Minimalist Sets",
-    price: 600,
+    id: 307,
+    name: "Very Seductive Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
     oldPrice: null,
     badge: "new",
-    rating: "4.7",
-    reviews: 178,
-    sizes: ["One Size"],
-    desc: "For those who let elegance speak softly. Black onyx cabochons set in matte gold — refined, clean, and deeply chic.",
-    materials: "Matte gold-plated brass, genuine black onyx.",
-    includes: ["Bar Necklace", "Stud Earrings", "Cuff Bracelet"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.22.jpeg",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Very Seductive is a 100ml BN Parfumes Eau de Parfum presented in a pink bottle with a striped ribbon. A feminine, giftable scent with a soft and glamorous character.",
+    notes: { top: "Fruity accords", heart: "Romantic florals", base: "Sweet woods and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.29%20%281%29-qa1ggWI6akywplleDpQ3eTCzbpMBhT.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.29%20%281%29-qa1ggWI6akywplleDpQ3eTCzbpMBhT.jpeg"]
   },
   {
-    id: 206,
-    name: "Caramel Tortoise Shell Set",
-    category: "Jewellery",
-    subcategory: "Statement Sets",
-    price: 700,
+    id: 308,
+    name: "Aswad Noir Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
     oldPrice: null,
-    badge: "hot",
-    rating: "4.9",
-    reviews: 445,
-    sizes: ["One Size"],
-    desc: "Bold warm-toned tortoiseshell resin meets brushed gold — this statement set adds instant warmth and personality to any outfit.",
-    materials: "Resin, brushed gold-finish metal.",
-    includes: ["Statement Necklace", "Large Hoop Earrings", "Stack Rings x3"],
-    img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.22 (1).jpeg",
+    badge: "new",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Aswad Noir is a 100ml Eau de Parfum in a deep navy bottle with a gold medallion and Arabic-inspired presentation. A dark, elegant fragrance for a refined signature.",
+    notes: { top: "Spiced aromatic accords", heart: "Woody oriental accords", base: "Oud, amber and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28%20%282%29-FuyeV4PSVWlmvpBnnOMiOXWhBpK1HF.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28%20%282%29-FuyeV4PSVWlmvpBnnOMiOXWhBpK1HF.jpeg"]
   },
+  {
+    id: 309,
+    name: "Shiny Pour Femme Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
+    oldPrice: null,
+    badge: "new",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Shiny Pour Femme by BN Parfumes is a 100ml Eau de Parfum in a jewel-toned pink and violet bottle. A luminous feminine fragrance designed to stand out on a dressing table.",
+    notes: { top: "Fruity fresh accords", heart: "Floral notes", base: "Soft woods and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28%20%281%29-IaVP5p00q95JJUiKzvHInw3HgLl2B5.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28%20%281%29-IaVP5p00q95JJUiKzvHInw3HgLl2B5.jpeg"]
+  },
+  {
+    id: 310,
+    name: "Aswad Aqua Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
+    oldPrice: null,
+    badge: "new",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Aswad Aqua is a 100ml Eau de Parfum in a vivid blue bottle with a silver medallion. A fresh aquatic interpretation of the Aswad style for daytime wear.",
+    notes: { top: "Fresh aquatic accords", heart: "Aromatic herbs and woods", base: "Clean musk and amber" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28-sQXzq07uez1Rc7V8DqSokm5Tf1qXfv.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.28-sQXzq07uez1Rc7V8DqSokm5Tf1qXfv.jpeg"]
+  },
+  {
+    id: 311,
+    name: "Manasik Oud Amber Ameerat",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
+    oldPrice: null,
+    badge: "new",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "Manasik Oud Amber by Ameerat is a 100ml fragrance with an amber-toned bottle and ornate gold cap. A warm oud-and-amber profile suited to evening wear and special occasions.",
+    notes: { top: "Warm spice accords", heart: "Oud and rose", base: "Amber, woods and musk" },
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.27-RulrClhfhUKFEVmSMgxaLOXNS1erzQ.jpeg",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.27-RulrClhfhUKFEVmSMgxaLOXNS1erzQ.jpeg"]
+  }
 ];
 
 const TRENDING = [
-  { rank: 1, name: "Pochi Monogram Baguette", category: "Handbags", price: "₹1,299", id: 101, img: "Handbags.png" },
-  { rank: 2, name: "Aquatic Kiss", category: "Perfumes", price: "From ₹500", id: 1, img: "Perfume image.png" },
-  { rank: 3, name: "Lumière Gold Set", category: "Jewellery", price: "₹600", id: 201, img: "Jewllery/WhatsApp Image 2026-04-06 at 13.30.22 (2).jpeg" },
-  { rank: 4, name: "Noir Quilted Chain Bag", category: "Handbags", price: "₹1,299", id: 103, img: "handbag 2.png" },
+  { rank: 1, name: "Lara White Eau de Parfum", category: "Perfumes", price: "₹2,000", id: 301, img: PRODUCTS[0].img },
+  { rank: 2, name: "Aswad Noir Eau de Parfum", category: "Perfumes", price: "₹2,000", id: 308, img: PRODUCTS[7].img },
+  { rank: 3, name: "Manasik Oud Amber Ameerat", category: "Perfumes", price: "₹2,000", id: 311, img: PRODUCTS[10].img },
+  { rank: 4, name: "Chic Girl Pink Eau de Parfum", category: "Perfumes", price: "₹2,000", id: 303, img: PRODUCTS[2].img }
 ];
+
+const PRODUCT_SOURCES = {
+  desertcart: "https://www.desertcart.in/"
+};
+
+if (typeof window !== "undefined") {
+  window.PRODUCT_SOURCES = PRODUCT_SOURCES;
+}
+
+if (typeof module !== "undefined") module.exports = { PRODUCTS, TRENDING };
+
+if (typeof window !== "undefined") {
+  window.PRODUCTS = PRODUCTS;
+  window.TRENDING = TRENDING;
+}
