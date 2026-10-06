@@ -69,7 +69,7 @@ function renderProduct(p) {
   const galleryBadge = document.getElementById("galleryBadge");
   if (galleryBadge && p.badge) {
     const badgeMap = { new: 'badge-new', bestseller: 'badge-bestseller', sale: 'badge-sale', exclusive: 'badge-exclusive', hot: 'badge-hot' };
-    const badgeLabel = { new: 'New In', bestseller: 'Best Seller', sale: 'Sale', exclusive: 'Exclusive', hot: '🔥 Hot' };
+    const badgeLabel = { new: 'Imported', bestseller: 'Best Seller', sale: 'Sale', exclusive: 'Exclusive', hot: '🔥 Hot' };
     galleryBadge.className = `product-badge gallery-badge ${badgeMap[p.badge] || ''}`;
     galleryBadge.textContent = badgeLabel[p.badge] || p.badge;
     galleryBadge.style.display = "block";
