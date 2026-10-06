@@ -379,7 +379,7 @@ function renderProductCard(p) {
     new: 'badge-new', bestseller: 'badge-bestseller',
     sale: 'badge-sale', exclusive: 'badge-exclusive', hot: 'badge-hot'
   };
-  const badgeLabel = { new: 'New', bestseller: 'Best Seller', sale: 'Sale', exclusive: 'Exclusive', hot: '🔥 Hot' };
+  const badgeLabel = { new: 'Imported', bestseller: 'Best Seller', sale: 'Sale', exclusive: 'Exclusive', hot: '🔥 Hot' };
 
   return `
   <div class="product-card" data-id="${p.id}">
