@@ -4,10 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PochiBag Store</title>
+  <meta name="theme-color" content="#0d0b09" />
+  <title>PochiBag Store - Luxury Perfumes, Handbags & Jewellery</title>
   <meta name="description"
     content="PochiBag is your destination for curated luxury perfumes, designer handbags and fine jewellery sets. Timeless elegance, delivered." />
+  <meta name="keywords" content="luxury perfumes, designer handbags, fine jewellery, luxury shopping, India" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PochiBag - Luxury Perfumes, Handbags & Jewellery" />
+  <meta property="og:description" content="Discover curated luxury perfumes, handcrafted bags and fine jewellery sets." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -18,19 +24,23 @@
 
 <body>
 
+  <!-- SKIP TO CONTENT LINK -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV (injected by JS) -->
-  <div id="navPlaceholder"></div>
+  <div id="navPlaceholder" role="navigation" aria-label="Primary navigation"></div>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
+  <main id="main-content">
+  <section class="hero" id="hero" role="region" aria-label="Hero section">
     <div class="hero-left">
-      <span class="hero-tag">New Collection 2026</span>
+      <span class="hero-tag" aria-label="New Collection 2026">New Collection 2026</span>
       <h1>Where Scent<br>Meets <em>Elegance</em></h1>
       <p class="hero-desc">Curated luxury perfumes, handcrafted bags and fine jewellery sets — each piece a statement of
         timeless grace and feminine power.</p>
       <div class="hero-cta">
         <a href="shop.html" class="btn-primary">Explore Collection</a>
-        <a href="#categories" class="btn-ghost">Browse Categories</a>
+        <a href="#categories" class="btn-ghost" aria-label="Browse all categories">Browse Categories</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -86,49 +96,49 @@
   </div>
 
   <!-- CATEGORIES -->
-  <section class="cat-banner reveal-on-scroll" id="categories">
+  <section class="cat-banner reveal-on-scroll" id="categories" role="region" aria-label="Shop by category">
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Our Collections</div>
         <h2>Shop by Category</h2>
-        <div class="gold-divider"></div>
+        <div class="gold-divider" aria-hidden="true"></div>
         <p>Three worlds of luxury, one destination</p>
       </div>
       <div class="cat-grid">
 
         <!-- Perfumes -->
-        <div class="cat-card" onclick="window.location.href='shop.html?category=Perfumes'">
-          <img src="Perfume ad.png" alt="PochiBag Perfumes Collection" loading="lazy" />
+        <a href="shop.html?category=Perfumes" class="cat-card" role="button" aria-label="Shop Perfumes collection">
+          <img src="Perfume ad.png" alt="Luxury perfumes collection at PochiBag" loading="lazy" />
           <div class="cat-overlay">
             <span class="cat-tag">Collection</span>
             <h3>Perfumes</h3>
             <p>Eau de Parfum · Extrait · Aquatic</p>
             <span class="cat-btn">Discover Scents →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Handbags -->
-        <div class="cat-card" onclick="window.location.href='shop.html?category=Handbags'">
-          <img src="Handbags.png" alt="PochiBag Handbag Collection" loading="lazy" />
+        <a href="shop.html?category=Handbags" class="cat-card" role="button" aria-label="Shop Handbags collection">
+          <img src="Handbags.png" alt="Designer handbags collection at PochiBag" loading="lazy" />
           <div class="cat-overlay">
             <span class="cat-tag">Collection</span>
             <h3>Handbags</h3>
             <p>Totes · Crossbody · Satchel · Mini</p>
             <span class="cat-btn">Explore Bags →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Jewellery -->
-        <div class="cat-card" onclick="window.location.href='shop.html?category=Jewellery'">
+        <a href="shop.html?category=Jewellery" class="cat-card" role="button" aria-label="Shop Jewellery collection">
           <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80"
-            alt="PochiBag Jewellery Collection" loading="lazy" />
+            alt="Fine jewellery sets collection at PochiBag" loading="lazy" />
           <div class="cat-overlay">
             <span class="cat-tag">Collection</span>
             <h3>Jewellery</h3>
             <p>Sets · Bridal · Minimalist · Statement</p>
             <span class="cat-btn">View Sets →</span>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -232,7 +242,7 @@
 
   <!-- NEWSLETTER -->
 
-  <section class="newsletter-section reveal-on-scroll">
+  <section class="newsletter-section reveal-on-scroll" role="region" aria-label="Newsletter subscription">
     <div class="container">
       <div class="newsletter-box">
         <div>
@@ -241,14 +251,23 @@
           <p>Get first access to new arrivals, exclusive offers, style edits and more — delivered to your inbox with
             grace.</p>
         </div>
-        <div class="nl-form">
-          <input type="email" id="nlEmail" placeholder="Your email address" />
-          <button class="btn-primary" onclick="subscribeNewsletter()">Subscribe Now</button>
+        <form class="nl-form" onsubmit="event.preventDefault(); subscribeNewsletter();" novalidate>
+          <input 
+            type="email" 
+            id="nlEmail" 
+            placeholder="Your email address" 
+            required
+            aria-label="Email address for newsletter"
+            autocomplete="email"
+          />
+          <button type="submit" class="btn-primary">Subscribe Now</button>
           <p class="nl-note">No spam. You can unsubscribe at any time.</p>
-        </div>
+        </form>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER (injected by JS) -->
   <div id="footerPlaceholder"></div>

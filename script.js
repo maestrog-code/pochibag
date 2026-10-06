@@ -75,10 +75,41 @@ function renderTrending() {
 // ---------- NEWSLETTER ----------
 function subscribeNewsletter() {
   const email = document.getElementById("nlEmail")?.value.trim();
-  if (!email || !email.includes("@")) {
+  if (!email) {
+    showToast("Please enter your email address.");
+    return;
+  }
+  
+  // Basic email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
     showToast("Please enter a valid email address.");
     return;
   }
-  showToast("✨ Welcome to the PochiBag inner circle!");
+  
+  showToast("✨ Welcome to the PochiBag inner circle! Check your inbox.");
   if (document.getElementById("nlEmail")) document.getElementById("nlEmail").value = "";
 }
+
+// ---------- KEYBOARD NAVIGATION ----------
+document.addEventListener("DOMContentLoaded", () => {
+  // Allow Enter key on newsletter form
+  const nlEmail = document.getElementById("nlEmail");
+  if (nlEmail) {
+    nlEmail.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        subscribeNewsletter();
+      }
+    });
+  }
+  
+  // Close modals on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal();
+      toggleSearch();
+      closeAll();
+    }
+  });
+});

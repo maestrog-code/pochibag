@@ -37,7 +37,19 @@ function addToCart(id, sizeOverride) {
   else { cart.push({ ...p, qty: 1, size, itemPrice }); }
   saveCart();
   updateCartUI();
-  showToast(`✨ "${p.name}" added to your bag`);
+  const qtyText = existing ? `quantity increased` : `added to your bag`;
+  showToast(`✨ "${p.name}" ${qtyText}`);
+  
+  // Announce to screen readers
+  const announcement = document.createElement('div');
+  announcement.setAttribute('role', 'status');
+  announcement.setAttribute('aria-live', 'polite');
+  announcement.setAttribute('aria-atomic', 'true');
+  announcement.textContent = `${p.name} has been ${qtyText}`;
+  announcement.style.position = 'absolute';
+  announcement.style.left = '-10000px';
+  document.body.appendChild(announcement);
+  setTimeout(() => announcement.remove(), 1000);
 }
 
 function removeFromCart(id, size) {
@@ -89,7 +101,7 @@ function updateCartUI() {
   if (!itemsEl || !footerEl) return;
 
   if (cart.length === 0) {
-    itemsEl.innerHTML = '<p class="cart-empty">Your bag is empty.<br><small>Discover our collections</small></p>';
+    itemsEl.innerHTML = '<p class="cart-empty" role="status">Your bag is empty.<br><a href="shop.html" style="color:var(--gold);text-decoration:underline;font-weight:600;">Discover our collections</a></p>';
     footerEl.style.display = "none";
     const giftEl = document.getElementById("cartGifting");
     if (giftEl) giftEl.style.display = "none";
@@ -170,14 +182,15 @@ function wishlistToggle(btn) {
 function toggleSearch() {
   const overlay = document.getElementById('searchOverlay');
   if (!overlay) return;
-  overlay.classList.toggle('active');
-  if (overlay.classList.contains('active')) {
-    setTimeout(() => document.getElementById('searchInput')?.focus(), 100);
+  const isActive = overlay.classList.toggle('active');
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('searchResults');
+  
+  if (isActive) {
+    setTimeout(() => input?.focus(), 100);
     document.body.style.overflow = 'hidden';
   } else {
-    const input = document.getElementById('searchInput');
     if (input) input.value = '';
-    const results = document.getElementById('searchResults');
     if (results) results.innerHTML = '';
     document.body.style.overflow = '';
   }
@@ -191,6 +204,7 @@ function performSearch() {
 
   if (!query || query.length < 2) {
     resultsContainer.innerHTML = '';
+    resultsContainer.setAttribute('aria-live', 'polite');
     return;
   }
 
@@ -201,20 +215,24 @@ function performSearch() {
   ).slice(0, 12);
 
   if (matches.length === 0) {
-    resultsContainer.innerHTML = `<p style="padding:1.25rem;color:var(--muted);font-family:'Jost',sans-serif;font-size:.85rem;">No results for "${query}"</p>`;
+    resultsContainer.innerHTML = `<p style="padding:1.25rem;color:var(--muted);font-family:'Jost',sans-serif;font-size:.85rem;" role="status">No results found for "${query}". Try another search.</p>`;
+    resultsContainer.setAttribute('aria-live', 'polite');
     return;
   }
 
   resultsContainer.innerHTML = matches.map(p => `
-    <a href="product.html?id=${p.id}" class="search-result-card" onclick="toggleSearch()">
+    <a href="product.html?id=${p.id}" class="search-result-card" onclick="toggleSearch()" role="button" tabindex="0">
       <img src="${p.img}" alt="${p.name}" class="search-result-img" loading="lazy">
       <div>
         <span class="search-result-brand">${p.category}</span>
         <span class="search-result-name">${p.name}</span>
       </div>
-      <span class="search-result-price">${typeof p.price === 'object' ? `From ₹${Math.min(...Object.values(p.price)).toLocaleString()}` : `₹${p.price.toLocaleString()}`}</span>
+      <span class="search-result-price" aria-label="Price">${typeof p.price === 'object' ? `From ₹${Math.min(...Object.values(p.price)).toLocaleString()}` : `₹${p.price.toLocaleString()}`}</span>
     </a>
   `).join('');
+  
+  resultsContainer.setAttribute('aria-live', 'polite');
+  resultsContainer.setAttribute('aria-label', `${matches.length} search results for "${query}"`);
 }
 
 // ---------- MODAL ----------
