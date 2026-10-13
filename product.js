@@ -139,6 +139,13 @@ function renderProduct(p) {
   }
 
   // Wishlist
+  const addBtn = el("addToBagBtn");
+  if (addBtn) {
+    addBtn.disabled = Boolean(p.outOfStock);
+    addBtn.setAttribute("aria-disabled", String(Boolean(p.outOfStock)));
+    addBtn.textContent = p.outOfStock ? "Out of Stock" : "Add to Bag";
+  }
+
   const wBtn = el("wishlistBtn");
   if (wBtn) {
     const isWished = wishlist.includes(p.id);
@@ -183,7 +190,7 @@ function selectProductSize(size, el) {
 }
 
 function addFromProductPage() {
-  if (!currentProduct) return;
+  if (!currentProduct || currentProduct.outOfStock) return;
   addToCart(currentProduct.id, selectedProductSize);
   setTimeout(() => toggleCart(), 300);
 }
