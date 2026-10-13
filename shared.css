@@ -442,6 +442,11 @@ ul { list-style: none; }
   transform: scale(1.07);
 }
 
+.product-badge.badge-out-of-stock {
+  background: #6d6258;
+  color: #fff;
+}
+
 .product-badge {
   position: absolute;
   top: .85rem; left: .85rem;
@@ -595,6 +600,14 @@ ul { list-style: none; }
 .product-card-actions .add-to-cart {
   flex: 1;
   margin-top: 0;
+}
+
+.add-to-cart:disabled,
+#addToBagBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: #8b8178;
+  box-shadow: none;
 }
 
 .btn-wa-order {
