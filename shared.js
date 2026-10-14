@@ -8,6 +8,8 @@ let cart = JSON.parse(localStorage.getItem("pochibag_cart") || "[]");
 let wishlist = JSON.parse(localStorage.getItem("pochibag_wishlist") || "[]");
 let isGiftWrapped = localStorage.getItem("pochibag_gift") === "true";
 let orderNote = localStorage.getItem("pochibag_note") || "";
+window.getPochiCart = () => cart;
+window.isPochiGiftWrapped = () => isGiftWrapped;
 
 function saveCart() {
   localStorage.setItem("pochibag_cart", JSON.stringify(cart));
@@ -510,7 +512,7 @@ function getNavHTML(activePage) {
     </div>
     <div class="cart-footer" id="cartFooter" style="display:none">
       <div class="cart-total">Total <strong id="cartTotal">₹0</strong></div>
-      <button class="btn-checkout">Proceed to Checkout</button>
+      <button class="btn-checkout" onclick="startCheckout()">Proceed to Checkout</button>
     </div>
   </div>
   <div class="overlay-bg" id="overlayBg" onclick="closeAll()"></div>
@@ -529,6 +531,7 @@ function getNavHTML(activePage) {
       <li><a href="shop.html?badge=sale">Sale</a></li>
     </ul>
     <div class="nav-actions">
+      <button class="connect-wallet-btn" onclick="connectWallet()" title="Connect wallet"><span data-wallet-label>Connect wallet</span></button>
       <button class="icon-btn" onclick="toggleSearch()" title="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
