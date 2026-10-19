@@ -16,10 +16,10 @@
           <button class="payment-close" onclick="closePaymentModal()" aria-label="Close payment options">×</button>
           <p class="eyebrow"><span></span> Secure checkout</p>
           <h2 id="paymentTitle">Choose your<br><em>way to pay.</em></h2>
-          <p>Your selected pieces are reserved while you complete payment. PochiBag never stores card details or wallet keys.</p>
+          <p>Choose how you would like to complete your order. Payment gateway checkout will be available soon.</p>
           <div class="payment-options">
-            <button class="payment-option" onclick="payWithRazorpay()"><span>Card / UPI / Netbanking</span><small>Razorpay</small></button>
-            <button class="payment-option" onclick="payWithWallet()"><span>Connect wallet</span><small id="walletOptionStatus">MetaMask / injected wallet</small></button>
+            <button class="payment-option payment-option-whatsapp" onclick="sendCartToWhatsApp()"><span>Confirm order on WhatsApp</span><small>Recommended for now</small></button>
+            <button class="payment-option" type="button" disabled aria-disabled="true"><span>Proceed to payment</span><small>Coming soon</small></button>
           </div>
           <p class="payment-status" id="paymentStatus" role="status"></p>
         </div>
@@ -28,6 +28,31 @@
 
   function openPaymentModal() { ensureModal(); document.getElementById('paymentModal').classList.add('open'); }
   window.closePaymentModal = () => document.getElementById('paymentModal')?.classList.remove('open');
+
+  window.sendCartToWhatsApp = () => {
+    const items = currentCart();
+    if (!items.length) return;
+    const lines = items.map(item => {
+      const unitPrice = Number(item.itemPrice || item.price || 0);
+      const size = item.size && item.size !== 'One Size' ? ` (${item.size})` : '';
+      return `• ${item.name}${size} × ${item.qty} — ${money(unitPrice * item.qty)}`;
+    });
+    const note = localStorage.getItem('pochibag_note')?.trim();
+    const gift = window.isPochiGiftWrapped?.() ? '\\nGift wrapping: Yes (+ ₹25)' : '';
+    const message = [
+      'Hello PochiBag, I would like to place this order:',
+      '',
+      ...lines,
+      gift,
+      `\\nTotal: ${money(cartTotal())}`,
+      note ? `Order note: ${note}` : '',
+      '',
+      'Please confirm availability and delivery details.'
+    ].filter(Boolean).join('\\n');
+    window.open(`https://wa.me/918264329574?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    closePaymentModal();
+  };
+
   window.startCheckout = () => {
     if (!currentCart().length) { window.showToast?.('Your bag is empty. Discover an artifact first.'); return; }
     openPaymentModal();
