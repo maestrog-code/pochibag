@@ -6,7 +6,7 @@
   };
   const money = value => `₹${Number(value || 0).toLocaleString('en-IN')}`;
   const currentCart = () => window.getPochiCart?.() || [];
-  const cartTotal = () => currentCart().reduce((sum, item) => sum + Number(item.itemPrice || item.price || 0) * Number(item.qty || 1), 0) + (window.isPochiGiftWrapped?.() ? 25 : 0);
+  const cartTotal = () => currentCart().reduce((sum, item) => sum + (window.getProductPrice ? window.getProductPrice(item, item.size) : Number(item.itemPrice || item.price || 0)) * Number(item.qty || 1), 0) + (window.isPochiGiftWrapped?.() ? 25 : 0);
 
   function ensureModal() {
     if (document.getElementById('paymentModal')) return;

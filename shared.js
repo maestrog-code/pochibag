@@ -21,12 +21,35 @@ function saveWishlist() {
   localStorage.setItem("pochibag_wishlist", JSON.stringify(wishlist));
 }
 
-function getProductPrice(p, size) {
+const DIWALI_DISCOUNT = 0.25;
+const DIWALI_START_MONTH = 9;
+const DIWALI_START_DAY = 15;
+const DIWALI_END_MONTH = 10;
+const DIWALI_END_DAY = 30;
+
+function isDiwaliOfferActive(date = new Date()) {
+  const start = new Date(date.getFullYear(), DIWALI_START_MONTH, DIWALI_START_DAY);
+  const end = new Date(date.getFullYear(), DIWALI_END_MONTH, DIWALI_END_DAY, 23, 59, 59);
+  return date >= start && date <= end;
+}
+
+function getProductBasePrice(p, size) {
   if (typeof p.price === 'object' && p.price !== null) {
     return p.price[size] || Object.values(p.price)[0];
   }
   return p.price;
 }
+
+function getProductPrice(p, size) {
+  const basePrice = Number(getProductBasePrice(p, size));
+  return isDiwaliOfferActive() ? Math.round(basePrice * (1 - DIWALI_DISCOUNT)) : basePrice;
+}
+
+window.getPochiOffer = () => ({
+  active: isDiwaliOfferActive(),
+  discount: DIWALI_DISCOUNT,
+  label: 'Diwali Offer: 25% Off'
+});
 
 // ---------- CART ----------
 function addToCart(id, sizeOverride) {
@@ -62,7 +85,7 @@ function removeFromCart(id, size) {
 
 function updateCartUI() {
   const count = cart.reduce((s, c) => s + c.qty, 0);
-  let subtotal = cart.reduce((s, c) => s + (c.itemPrice || c.price) * c.qty, 0);
+  let subtotal = cart.reduce((s, c) => s + getProductPrice(c, c.size) * c.qty, 0);
   const giftPrice = isGiftWrapped ? 25 : 0;
   const total = subtotal + giftPrice;
 
@@ -125,7 +148,7 @@ function updateCartUI() {
         <div class="cart-item-info">
           <p class="cart-item-category">${c.category}</p>
           <p class="cart-item-name">${c.name}${c.size && c.size !== 'One Size' ? ` · ${c.size}` : ''}</p>
-          <p class="cart-item-price">₹${((c.itemPrice || c.price) * c.qty).toLocaleString()} ${c.qty > 1 ? `<span style="color:var(--muted);font-size:.75rem">×${c.qty}</span>` : ''}</p>
+          <p class="cart-item-price">₹${(getProductPrice(c, c.size) * c.qty).toLocaleString('en-IN')} ${c.qty > 1 ? `<span style="color:var(--muted);font-size:.75rem">×${c.qty}</span>` : ''}</p>
         </div>
         <button class="cart-item-remove" onclick="removeFromCart(${c.id},'${c.size}')" title="Remove">✕</button>
       </div>
@@ -386,9 +409,9 @@ function renderProductCard(p) {
   return `
   <div class="product-card" data-id="${p.id}">
     <div class="product-img">
-      <a href="product.html?id=${p.id}">
-        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
-      </a>
+  <a href="product.html?id=${p.id}">
+  ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy"/>` : `<div class="product-image-placeholder" role="img" aria-label="${p.name} image unavailable"><span>Image coming soon</span></div>`}
+  </a>
       ${p.badge ? `<span class="product-badge ${badgeMap[p.badge]}">${badgeLabel[p.badge]}</span>` : ''}
       ${p.outOfStock ? `<span class="product-badge badge-out-of-stock">Out of Stock</span>` : ''}
       <button class="wishlist-btn ${isWished ? 'active' : ''}" data-id="${p.id}" data-wished="${isWished}"
@@ -402,8 +425,8 @@ function renderProductCard(p) {
       </a>
       <div class="product-meta">
         <div class="product-price">
-          <strong>${typeof p.price === 'object' ? `From ₹${Math.min(...Object.values(p.price)).toLocaleString()}` : `₹${p.price.toLocaleString()}`}</strong>
-          ${p.oldPrice ? `<del>₹${p.oldPrice.toLocaleString()}</del>` : ''}
+          <strong>${typeof p.price === 'object' ? `From ₹${getProductPrice(p, p.sizes?.[0]).toLocaleString('en-IN')}` : `₹${getProductPrice(p).toLocaleString('en-IN')}`}</strong>
+          ${isDiwaliOfferActive() ? `<del>₹${(typeof p.price === 'object' ? Math.min(...Object.values(p.price)) : p.price).toLocaleString('en-IN')}</del><span class="offer-save-tag">25% off</span>` : p.oldPrice ? `<del>₹${p.oldPrice.toLocaleString('en-IN')}</del>` : ''}
         </div>
         <span class="product-rating"><span class="star-icon">★</span> ${p.rating}</span>
       </div>

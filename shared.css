@@ -425,6 +425,19 @@ ul { list-style: none; }
   outline-offset: 2px;
 }
 
+.product-image-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  background: linear-gradient(135deg, #eee8df, #d9cfc3);
+  color: #75695d;
+  font-family: 'Jost', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .product-img {
   position: relative;
   height: 300px;
@@ -548,6 +561,24 @@ ul { list-style: none; }
   font-weight: 700;
   color: var(--brown-dark);
 }
+
+.diwali-offer-bar {
+  display: flex;
+  justify-content: center;
+  gap: .65rem;
+  flex-wrap: wrap;
+  padding: .55rem 1rem;
+  background: linear-gradient(90deg, #4b1015, #8f2d24, #4b1015);
+  color: #fff4d6;
+  font-family: 'Jost', sans-serif;
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+
+.diwali-offer-bar strong { color: #ffd36a; text-transform: uppercase; letter-spacing: .12em; }
+.offer-save-tag { color: var(--accent-red); font-size: .7rem; font-weight: 700; margin-left: .35rem; }
+
+.offer-save-tag { color: var(--accent-red); font-size: .7rem; font-weight: 700; margin-left: .35rem; }
 
 .product-price del {
   font-family: 'Jost', sans-serif;

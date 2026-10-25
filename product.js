@@ -91,8 +91,14 @@ function renderProduct(p) {
   const initialSize = (p.sizes && p.sizes[0]) || "One Size";
   const initialPrice = getProductPrice(p, initialSize);
   el("productPrice").textContent = `₹${initialPrice.toLocaleString()}`;
-  if (p.oldPrice) {
-    el("productOldPrice").textContent = `₹${p.oldPrice.toLocaleString()}`;
+  const baseInitialPrice = getProductBasePrice(p, initialSize);
+  if (isDiwaliOfferActive()) {
+    el("productOldPrice").textContent = `₹${Number(baseInitialPrice).toLocaleString('en-IN')}`;
+    el("productOldPrice").style.display = "inline";
+    el("productSaveTag").textContent = "Diwali 25% Off";
+    el("productSaveTag").style.display = "inline";
+  } else if (p.oldPrice) {
+    el("productOldPrice").textContent = `₹${p.oldPrice.toLocaleString('en-IN')}`;
     el("productOldPrice").style.display = "inline";
     const saving = Math.round((1 - initialPrice / p.oldPrice) * 100);
     el("productSaveTag").textContent = `Save ${saving}%`;
