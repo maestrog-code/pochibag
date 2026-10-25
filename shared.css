@@ -425,6 +425,19 @@ ul { list-style: none; }
   outline-offset: 2px;
 }
 
+.product-image-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  background: linear-gradient(135deg, #eee8df, #d9cfc3);
+  color: #75695d;
+  font-family: 'Jost', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .product-img {
   position: relative;
   height: 300px;

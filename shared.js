@@ -409,9 +409,9 @@ function renderProductCard(p) {
   return `
   <div class="product-card" data-id="${p.id}">
     <div class="product-img">
-      <a href="product.html?id=${p.id}">
-        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
-      </a>
+  <a href="product.html?id=${p.id}">
+  ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy"/>` : `<div class="product-image-placeholder" role="img" aria-label="${p.name} image unavailable"><span>Image coming soon</span></div>`}
+  </a>
       ${p.badge ? `<span class="product-badge ${badgeMap[p.badge]}">${badgeLabel[p.badge]}</span>` : ''}
       ${p.outOfStock ? `<span class="product-badge badge-out-of-stock">Out of Stock</span>` : ''}
       <button class="wishlist-btn ${isWished ? 'active' : ''}" data-id="${p.id}" data-wished="${isWished}"
