@@ -21,6 +21,23 @@ const PRODUCTS = [
     images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-10-06%20at%2012.40.31-dfHSoORPX3ATlygXAgjqaB3stxkVOo.jpeg"]
   },
   {
+    id: 315,
+    name: "Chic Girl Purple Eau de Parfum",
+    category: "Perfumes",
+    subcategory: "Eau de Parfum",
+    price: 2000,
+    oldPrice: null,
+    badge: "new",
+    rating: "5.0",
+    reviews: 0,
+    sizes: ["100ml"],
+    desc: "BN Parfums Chic Girl Purple is a 100ml long-lasting Eau de Parfum for women, presented in the signature high-heel-inspired bottle. The product is listed as an imported fragrance and is available for order confirmation through PochiBag.",
+    notes: { top: "Fruity accords", heart: "Floral accords", base: "Musk and warm oriental accords" },
+    referenceUrl: "https://www.myntra.com/perfume/bn+parfums/bn-parfums-women-chic-girl-purple-long-lasting-eau-de-parfum---100-ml/32788533/buy",
+    img: "",
+    images: []
+  },
+  {
     id: 302,
     name: "Black XXL Pour Homme Eau de Toilette",
     category: "Perfumes",
