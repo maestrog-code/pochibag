@@ -33,9 +33,8 @@ const PRODUCTS = [
     sizes: ["100ml"],
     desc: "BN Parfums Chic Girl Purple is a 100ml long-lasting Eau de Parfum for women, presented in the signature high-heel-inspired bottle. The product is listed as an imported fragrance and is available for order confirmation through PochiBag.",
     notes: { top: "Fruity accords", heart: "Floral accords", base: "Musk and warm oriental accords" },
-    referenceUrl: "https://www.myntra.com/perfume/bn+parfums/bn-parfums-women-chic-girl-purple-long-lasting-eau-de-parfum---100-ml/32788533/buy",
-    img: "",
-    images: []
+    img: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Wt2kX2FFxUXGfUpSgJarw8VhCPdOOg.png",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Wt2kX2FFxUXGfUpSgJarw8VhCPdOOg.png"]
   },
   {
     id: 316,
