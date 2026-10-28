@@ -59,7 +59,7 @@ export default async function handler(req, res) {
   const webhookUrl = process.env.ORDER_NOTIFICATION_WEBHOOK_URL;
   let notificationStatus = 'pending';
   if (webhookUrl) {
-    const notificationResponse = await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ event: 'order.created', order: savedOrder }) });
+    const notificationResponse = await fetch(webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ event: 'order.created', recipientEmail: 'maestrogambis@gmail.com', confirmationEmail: 'maestrogambis@gmail.com', order: savedOrder }) });
     notificationStatus = notificationResponse.ok ? 'sent' : 'failed';
     await fetch(`${supabaseUrl}/rest/v1/orders?order_number=eq.${encodeURIComponent(orderNumber)}`, { method: 'PATCH', headers: { apikey: serviceRoleKey, Authorization: `Bearer ${serviceRoleKey}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ notification_status: notificationStatus }) });
   }
