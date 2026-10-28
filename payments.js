@@ -17,6 +17,15 @@
           <p class="eyebrow"><span></span> Secure checkout</p>
           <h2 id="paymentTitle">Choose your<br><em>way to pay.</em></h2>
           <p>Choose how you would like to complete your order. Payment gateway checkout will be available soon.</p>
+          <div class="delivery-details">
+            <label for="orderCustomerName">Full name</label>
+            <input id="orderCustomerName" name="customerName" autocomplete="name" required placeholder="Your name" />
+            <label for="orderPhone">Phone number</label>
+            <input id="orderPhone" name="phone" type="tel" autocomplete="tel" required placeholder="Your phone number" />
+            <label for="orderAddress">Delivery address</label>
+            <textarea id="orderAddress" name="address" autocomplete="street-address" required rows="3" placeholder="House number, street, area, city, state and PIN code"></textarea>
+            <p class="delivery-required" id="deliveryRequired" role="alert"></p>
+          </div>
           <div class="payment-options">
             <button class="payment-option payment-option-whatsapp" onclick="sendCartToWhatsApp()"><span>Confirm order on WhatsApp</span><small>Recommended for now</small></button>
             <button class="payment-option" type="button" disabled aria-disabled="true"><span>Proceed to payment</span><small>Coming soon</small></button>
@@ -32,6 +41,15 @@
   window.sendCartToWhatsApp = () => {
     const items = currentCart();
     if (!items.length) return;
+    const customerName = document.getElementById('orderCustomerName')?.value.trim();
+    const phone = document.getElementById('orderPhone')?.value.trim();
+    const address = document.getElementById('orderAddress')?.value.trim();
+    const requiredMessage = document.getElementById('deliveryRequired');
+    if (!customerName || !phone || !address) {
+      if (requiredMessage) requiredMessage.textContent = 'Please enter your name, phone number and delivery address before continuing.';
+      return;
+    }
+    if (requiredMessage) requiredMessage.textContent = '';
     const lines = items.map(item => {
       const unitPrice = Number(item.itemPrice || item.price || 0);
       const size = item.size && item.size !== 'One Size' ? ` (${item.size})` : '';
@@ -41,6 +59,10 @@
     const gift = window.isPochiGiftWrapped?.() ? '\\nGift wrapping: Yes (+ ₹25)' : '';
     const message = [
       'Hello PochiBag, I would like to place this order:',
+      '',
+      `Customer name: ${customerName}`,
+      `Phone: ${phone}`,
+      `Delivery address: ${address}`,
       '',
       ...lines,
       gift,
