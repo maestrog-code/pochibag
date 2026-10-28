@@ -1,0 +1,9 @@
+{
+  "name": "pochibag",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "for f in api/*.js api/_lib/*.js test/*.js; do node --check \"$f\"; done",
+    "test:order-lifecycle": "node test/order-lifecycle.test.js"
+  }
+}

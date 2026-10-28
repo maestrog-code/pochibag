@@ -1,17 +1,21 @@
-# PochiBag payment setup
+# PochiBag payment and order setup
 
-The storefront now includes:
+The storefront uses Razorpay Checkout for cards, UPI and netbanking. The browser first creates a PochiBag order in Supabase, then `/api/create-order` creates the matching Razorpay order. `/api/verify-payment` verifies the HMAC signature and records the payment against the original PochiBag order.
 
-- **Razorpay Checkout** for cards, UPI and netbanking.
-- **Injected wallet connection** for MetaMask-compatible wallets.
-- Serverless endpoints for Razorpay order creation and HMAC verification.
+Run `supabase/migrations/001_order_lifecycle.sql` before deploying the handlers. The full status and fulfilment workflow is documented in `ORDER_FLOW.md`.
 
-Add these environment variables to the Vercel project before taking live payments:
+## Environment variables
 
 | Variable | Scope | Purpose |
 | --- | --- | --- |
 | `RAZORPAY_KEY_ID` | Production + Preview | Public Razorpay key returned to the browser through `/api/public-config`. |
-| `RAZORPAY_KEY_SECRET` | Production + Preview | Server-only secret used by `/api/create-order` and `/api/verify-payment`. Never expose it to client code. |
-| `POCHIBAG_WALLET_ADDRESS` | Optional | Public merchant address reserved for a future chain/token-specific crypto checkout. The current wallet flow only connects the wallet and does not initiate a transfer. |
+| `RAZORPAY_KEY_SECRET` | Production + Preview | Server-only secret used to create and verify Razorpay orders. Never expose it to client code. |
+| `SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_URL` | Production + Preview | Supabase project URL. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Production + Preview | Server-only key used to persist orders and lifecycle events. |
+| `RESEND_API_KEY` | Production + Preview | Transactional email API key. |
+| `ORDER_EMAIL_FROM` | Production + Preview | Sender identity verified with Resend. |
+| `ORDER_CONFIRMATION_EMAIL` | Production + Preview | Optional merchant recipient; defaults to `maestrogambis@gmail.com`. |
+| `ORDER_ADMIN_TOKEN` | Production + Preview | Secret bearer token for the fulfilment status endpoint. |
+| `POCHIBAG_WALLET_ADDRESS` | Optional | Public merchant address reserved for a future chain/token-specific crypto checkout. |
 
-After adding the variables, redeploy the Vercel project and test with Razorpay test-mode credentials before switching to live keys.
+Test with Razorpay test-mode credentials before switching to live keys. Email delivery requires a verified `ORDER_EMAIL_FROM` identity; the requested confirmation recipient is `maestrogambis@gmail.com` by default.
