@@ -4,6 +4,25 @@
    ========================================= */
 
 /* ----- ROOT & RESET ----- */
+body.dark-theme {
+  --white: #151210;
+  --off-white: #211b17;
+  --cream: #2d251f;
+  --text: #f7efe5;
+  --text-light: #d2c0ad;
+  --muted: #b09a86;
+  --border: rgba(232,201,122,.22);
+  --card-bg: #211b17;
+  --section-alt: #1b1714;
+  --shadow: 0 4px 20px rgba(0,0,0,.28);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.4);
+}
+
+body.dark-theme .theme-toggle { color: var(--gold2); }
+.theme-toggle { min-width: 60px; padding: .35rem .5rem; font: 600 .62rem 'Jost', sans-serif; letter-spacing: .05em; text-transform: uppercase; }
+.theme-icon { pointer-events: none; }
+
+
 :root {
   --white: #fdfaf6;
   --off-white: #f5efe8;
