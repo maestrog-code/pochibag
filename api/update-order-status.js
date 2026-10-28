@@ -16,8 +16,11 @@ export default async function handler(req, res) {
   if (!order) return res.status(404).json({ error: 'Order not found' });
   if (!['paid', 'confirmed', 'processing', 'shipped', 'out_for_delivery'].includes(order.status) && status !== 'cancelled') return res.status(409).json({ error: 'Only paid orders can move into fulfilment' });
   const patch = { delivery_status: DELIVERY_STATUS_BY_ORDER_STATUS[status], tracking_number: cleanText(body.trackingNumber, 120) || order.tracking_number || null, delivery_note: cleanText(body.note, 500) || null };
+  const changed = order.status !== status || order.delivery_status !== patch.delivery_status || order.tracking_number !== patch.tracking_number || order.delivery_note !== patch.delivery_note;
   const updated = await transitionOrder(order, status, patch, `delivery.${status}`);
-  try { await sendOrderEmail({ event: `delivery.${status}`, order: updated, subject: `PochiBag delivery update: ${updated.order_number}`, message: body.note || `Your order status is now ${status.replaceAll('_', ' ')}.` }); } catch (error) { console.error('Delivery email failed', error.message); }
+  if (changed) {
+    try { await sendOrderEmail({ event: `delivery.${status}`, order: updated, subject: `PochiBag delivery update: ${updated.order_number}`, message: body.note || `Your order status is now ${status.replaceAll('_', ' ')}.` }); } catch (error) { console.error('Delivery email failed', error.message); }
+  }
   return res.status(200).json({ order: { orderId: updated.order_number, status: updated.status, deliveryStatus: updated.delivery_status, trackingNumber: updated.tracking_number } });
 }
 

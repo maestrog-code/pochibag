@@ -77,6 +77,7 @@ globalThis.fetch = async (input, options = {}) => {
 const { default: submitOrder } = await import('../api/submit-order.js');
 const { default: createOrder } = await import('../api/create-order.js');
 const { default: verifyPayment } = await import('../api/verify-payment.js');
+const { default: razorpayWebhook } = await import('../api/razorpay-webhook.js');
 const { default: updateOrderStatus } = await import('../api/update-order-status.js');
 const { default: orderStatus } = await import('../api/order-status.js');
 
@@ -111,6 +112,17 @@ assert.equal(orders.get(orderId).payment_status, 'created');
 
 const paymentId = 'pay_test_456';
 const signature = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET).update(`order_test_123|${paymentId}`).digest('hex');
+const webhookPayload = { event: 'payment.captured', payload: { payment: { entity: { id: paymentId, order_id: 'order_test_123' } } } };
+const webhookRawBody = JSON.stringify(webhookPayload);
+const webhookSignature = crypto.createHmac('sha256', process.env.RAZORPAY_WEBHOOK_SECRET || 'webhook-test-secret').update(webhookRawBody).digest('hex');
+process.env.RAZORPAY_WEBHOOK_SECRET = 'webhook-test-secret';
+const webhookInvalid = await call(razorpayWebhook, request('POST', webhookPayload, { 'x-razorpay-signature': 'invalid' }));
+assert.equal(webhookInvalid.statusCode, 400);
+const webhookVerified = await call(razorpayWebhook, { method: 'POST', body: webhookPayload, rawBody: webhookRawBody, headers: { 'x-razorpay-signature': webhookSignature } });
+assert.equal(webhookVerified.statusCode, 200);
+assert.equal(webhookVerified.payload.status, 'paid');
+assert.equal(orders.get(orderId).payment_status, 'paid');
+assert.equal(events.at(-1).event_type, 'payment.webhook.payment.captured');
 const verified = await call(verifyPayment, request('POST', {
   razorpay_order_id: 'order_test_123', razorpay_payment_id: paymentId, razorpay_signature: signature
 }));
@@ -120,7 +132,7 @@ assert.equal(orders.get(orderId).status, 'paid');
 assert.equal(orders.get(orderId).payment_status, 'paid');
 assert.equal(orders.get(orderId).payment_signature_verified, true);
 assert.equal(orders.get(orderId).payment_id, paymentId);
-assert.equal(events.at(-1).event_type, 'payment.verified');
+assert.equal(events.at(-1).event_type, 'payment.webhook.payment.captured');
 assert.equal(emails.at(-1).to[0], 'maestrogambis@gmail.com');
 
 for (const [status, expectedDelivery, extra = {}] of [
