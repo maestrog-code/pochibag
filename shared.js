@@ -557,6 +557,9 @@ function getNavHTML(activePage) {
       <li><a href="shop.html?badge=sale">Sale</a></li>
     </ul>
     <div class="nav-actions">
+      <button class="theme-toggle icon-btn" id="themeToggle" onclick="toggleTheme()" type="button" title="Switch to light mode" aria-label="Switch to light mode" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">Dark</span>
+      </button>
       <button class="connect-wallet-btn" onclick="connectWallet()" title="Connect wallet"><span data-wallet-label>Connect wallet</span></button>
       <button class="icon-btn" onclick="toggleSearch()" title="Search" aria-label="Search products">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -612,8 +615,36 @@ function getNavHTML(activePage) {
   </a>`;
 }
 
-// ---------- INIT ----------
-document.addEventListener("DOMContentLoaded", () => {
+  // ---------- THEME ----------
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.body.classList.toggle("dark-theme", isDark);
+    const button = document.getElementById("themeToggle");
+    if (button) {
+      button.setAttribute("aria-pressed", String(isDark));
+      button.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      button.title = isDark ? "Switch to light mode" : "Switch to dark mode";
+      const icon = button.querySelector(".theme-icon");
+      if (icon) icon.textContent = isDark ? "Light" : "Dark";
+    }
+  }
+
+  function toggleTheme() {
+    const nextTheme = document.body.classList.contains("dark-theme") ? "light" : "dark";
+    applyTheme(nextTheme);
+    try { localStorage.setItem("pochibag-theme", nextTheme); } catch (_) {}
+  }
+
+  function initTheme() {
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("pochibag-theme"); } catch (_) {}
+    const systemPrefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+    applyTheme(savedTheme || (systemPrefersDark ? "dark" : "light"));
+  }
+
+  // ---------- INIT ----------
+  document.addEventListener("DOMContentLoaded", () => {
+    initTheme();
   setupScrollNav();
   updateCartUI();
   initScrollAnimations();
