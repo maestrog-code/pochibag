@@ -38,41 +38,31 @@
   function openPaymentModal() { ensureModal(); document.getElementById('paymentModal').classList.add('open'); }
   window.closePaymentModal = () => document.getElementById('paymentModal')?.classList.remove('open');
 
-  window.sendCartToWhatsApp = () => {
+  window.sendCartToWhatsApp = async () => {
     const items = currentCart();
     if (!items.length) return;
     const customerName = document.getElementById('orderCustomerName')?.value.trim();
     const phone = document.getElementById('orderPhone')?.value.trim();
     const address = document.getElementById('orderAddress')?.value.trim();
     const requiredMessage = document.getElementById('deliveryRequired');
+    const status = document.getElementById('paymentStatus');
     if (!customerName || !phone || !address) {
       if (requiredMessage) requiredMessage.textContent = 'Please enter your name, phone number and delivery address before continuing.';
       return;
     }
     if (requiredMessage) requiredMessage.textContent = '';
-    const lines = items.map(item => {
-      const unitPrice = Number(item.itemPrice || item.price || 0);
-      const size = item.size && item.size !== 'One Size' ? ` (${item.size})` : '';
-      return `• ${item.name}${size} × ${item.qty} — ${money(unitPrice * item.qty)}`;
+    if (status) status.textContent = 'Saving your order…';
+    const response = await fetch('/api/submit-order', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ customerName, phone, address, items, total: cartTotal(), giftWrapped: Boolean(window.isPochiGiftWrapped?.()) })
     });
-    const note = localStorage.getItem('pochibag_note')?.trim();
-    const gift = window.isPochiGiftWrapped?.() ? '\\nGift wrapping: Yes (+ ₹25)' : '';
-    const message = [
-      'Hello PochiBag, I would like to place this order:',
-      '',
-      `Customer name: ${customerName}`,
-      `Phone: ${phone}`,
-      `Delivery address: ${address}`,
-      '',
-      ...lines,
-      gift,
-      `\\nTotal: ${money(cartTotal())}`,
-      note ? `Order note: ${note}` : '',
-      '',
-      'Please confirm availability and delivery details.'
-    ].filter(Boolean).join('\\n');
-    window.open(`https://wa.me/918264329574?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    if (!response.ok) {
+      if (status) status.textContent = 'We could not save your order. Please try again.';
+      return;
+    }
+    const { orderId } = await response.json();
     closePaymentModal();
+    window.location.href = `order-success.html?order=${encodeURIComponent(orderId)}`;
   };
 
   window.startCheckout = () => {
