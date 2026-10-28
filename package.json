@@ -5,6 +5,7 @@
   "scripts": {
     "check": "for f in api/*.js api/_lib/*.js test/*.js; do node --check \"$f\"; done",
     "test:order-lifecycle": "node test/order-lifecycle.test.js",
+    "test:whatsapp-checkout": "node test/whatsapp-checkout.test.js",
     "check:production": "node scripts/check-production.mjs"
   }
 }

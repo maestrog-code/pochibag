@@ -2,6 +2,8 @@
 
 The backend records this lifecycle: `pending_payment` → `paid` → `confirmed` → `processing` → `shipped` → `out_for_delivery` → `delivered`. `cancelled` is available from fulfilment. Every transition is stored in `order_events`.
 
+WhatsApp remains available as the manual-confirmation checkout path while payment integrations are being finalized. The storefront saves the order first, emails `maestrogambis@gmail.com`, and then opens WhatsApp at `+91 8264329574` with the order ID, customer details, delivery address, item summary, and total prefilled. Razorpay remains an optional online-payment path alongside it.
+
 Customers receive an email at `customer_email` whenever delivery status, tracking number, or delivery note changes. The merchant address `maestrogambis@gmail.com` is also included on these notifications. Repeating the same status update without changing tracking or notes is idempotent and does not send a duplicate alert.
 
 Razorpay webhooks are accepted at `POST /api/razorpay-webhook`. The handler verifies `X-Razorpay-Signature`, synchronizes `payment.captured`, `payment.authorized`, and `order.paid` events, records the payment against `razorpay_order_id`, and safely ignores duplicate deliveries. It also records `payment.failed` events without marking the order paid.
