@@ -32,6 +32,8 @@
   --transition: 0.3s cubic-bezier(.4,0,.2,1);
   --shadow: 0 4px 20px rgba(124,92,62,0.12);
   --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+  --focus-ring: 0 0 0 3px rgba(201,168,76,0.35);
+  --content-readable: 68ch;
 }
 
 *, *::before, *::after {
@@ -71,11 +73,30 @@ a {
   transition: color var(--transition);
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--gold);
-  outline-offset: 2px;
-  border-radius: 2px;
+  outline-offset: 3px;
+  box-shadow: var(--focus-ring);
+  border-radius: 3px;
 }
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+button,
+a,
+input,
+textarea,
+select { min-height: 44px; }
+
+p { max-width: var(--content-readable); }
 
 ul { list-style: none; }
 
@@ -1370,6 +1391,9 @@ ul { list-style: none; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .nav-links a { display: block; padding: .25rem 0; }
+  .nav-actions { gap: .25rem; }
+  .connect-wallet-btn { display: none; }
   .hamburger { display: block; }
   .modal { grid-template-columns: 1fr; }
   .modal-img { height: 280px; }
@@ -1444,5 +1468,16 @@ ul { list-style: none; }
 
 @media (max-width: 480px) {
   .whatsapp-float { bottom: 1.25rem; right: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll { opacity: 1; transform: none; }
 }
 

@@ -364,8 +364,11 @@ function setupFadeIn() {
 // ---------- HAMBURGER ----------
 function toggleMenu() {
   const links = document.querySelector(".nav-links");
+  const button = document.getElementById("hamburger");
   if (!links) return;
   const isOpen = links.style.display === "flex";
+  button?.setAttribute("aria-expanded", String(!isOpen));
+  button?.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
   if (isOpen) {
     links.style.display = "";
     links.style.position = "";
@@ -544,8 +547,8 @@ function getNavHTML(activePage) {
     <a href="index.html" class="nav-logo">
       <img src="logo-transparent.png" alt="PochiBag" style="height:50px;width:auto;object-fit:contain;"/>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a></li>
+<ul class="nav-links" id="primaryMenu" aria-label="Primary menu">
+    <li><a href="index.html" class="${activePage === 'home' ? 'active' : ''}">Home</a></li>
       <li><a href="shop.html" class="${activePage === 'shop' ? 'active' : ''}">Shop</a></li>
       <li><a href="shop.html?category=Perfumes" class="${activePage === 'perfumes' ? 'active' : ''}">Perfumes</a></li>
       <li><a href="shop.html?category=Handbags" class="${activePage === 'handbags' ? 'active' : ''}">Handbags</a></li>
@@ -555,17 +558,17 @@ function getNavHTML(activePage) {
     </ul>
     <div class="nav-actions">
       <button class="connect-wallet-btn" onclick="connectWallet()" title="Connect wallet"><span data-wallet-label>Connect wallet</span></button>
-      <button class="icon-btn" onclick="toggleSearch()" title="Search">
+      <button class="icon-btn" onclick="toggleSearch()" title="Search" aria-label="Search products">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
       </button>
-      <button class="icon-btn" title="Wishlist">
+      <button class="icon-btn" title="Wishlist" aria-label="Wishlist">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
         </svg>
       </button>
-      <button class="icon-btn cart-btn" onclick="toggleCart()" title="Shopping Bag">
+      <button class="icon-btn cart-btn" onclick="toggleCart()" title="Shopping Bag" aria-label="Open shopping bag">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -574,7 +577,7 @@ function getNavHTML(activePage) {
         <span class="cart-badge" id="cartBadge" style="display:none">0</span>
       </button>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-controls="primaryMenu" aria-expanded="false" aria-label="Open navigation menu">&#9776;</button>
   </nav>
 
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
